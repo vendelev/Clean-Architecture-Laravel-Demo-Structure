@@ -1,0 +1,13 @@
+services:
+  php-dev:
+    image: clean-architecture/laravel-demo-structure:0.1
+    build:
+      context: docker
+      target: php-dev
+      args:
+        - UID=${UID}
+        - GID=${GID}
+    volumes:
+      - ./backend:/var/www/backend/
+    ports:
+      - "8084:80"

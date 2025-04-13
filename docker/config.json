@@ -1,0 +1,51 @@
+{
+  "listeners": {
+    "*:80": {
+      "pass": "routes"
+    }
+  },
+  "routes": [
+    {
+      "action": {
+        "share": "/var/www/backend/public$uri",
+        "fallback": {
+          "pass": "applications/php"
+        }
+      }
+    }
+  ],
+  "applications": {
+    "php": {
+      "type": "php",
+      "limits": {
+        "requests": 1000,
+        "timeout": 60
+      },
+      "processes": {
+        "max": 16,
+        "spare": 2,
+        "idle_timeout": 30
+      },
+      "root": "/var/www/backend/public",
+      "user": "www-data",
+      "group": "www-data",
+      "script": "index.php",
+      "options": {
+        "admin": {
+          "file_uploads": "On",
+          "memory_limit": "512M",
+          "upload_max_filesize": "500M",
+          "post_max_size": "512M",
+          "max_execution_time": "300",
+          "max_input_time": "300"
+        }
+      }
+    }
+  },
+  "settings": {
+    "http": {
+      "body_read_timeout": 300,
+      "max_body_size": 536870912
+    }
+  }
+}
