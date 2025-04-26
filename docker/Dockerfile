@@ -9,16 +9,19 @@ FROM mlocati/php-extension-installer:2.7.31 AS php-extension-installer
 #####
 FROM php:${PHP_VERSION} AS unit_builder
 
-RUN apt-get update && \
-    apt-get install -y libpcre2-dev git && \
-    mkdir -p /usr/lib/unit/modules && \
-    git clone https://github.com/nginx/unit.git && \
-    cd unit && \
-    git checkout ${UNIT_VERSION} && \
-    ./configure --prefix=/usr --state=/var/lib/unit --control=unix:/var/run/control.unit.sock --log=/var/log/unit.log --user=www-data --group=www-data --tmp=/tmp --modules=/usr/lib/unit/modules && \
-    ./configure php && \
-    make && \
-    make install
+RUN <<EOF
+  set -e
+  apt-get update
+  apt-get install -y libpcre2-dev git
+  mkdir -p /usr/lib/unit/modules
+  git clone https://github.com/nginx/unit.git
+  cd unit
+  git checkout ${UNIT_VERSION}
+  ./configure --prefix=/usr --state=/var/lib/unit --control=unix:/var/run/control.unit.sock --log=/var/log/unit.log --user=www-data --group=www-data --tmp=/tmp --modules=/usr/lib/unit/modules
+  ./configure php
+  make
+  make install
+EOF
 
 #####
 FROM php:${PHP_VERSION} AS php-base
@@ -29,6 +32,8 @@ COPY --from=php-extension-installer /usr/bin/install-php-extensions /usr/local/b
 COPY --from=composer /usr/bin/composer /usr/bin/
 
 RUN <<EOF
+  set -e
+  apt-get update
   apt-get install -y zip unzip tzdata
   rm /etc/localtime
   ln -s /usr/share/zoneinfo/${LOCALTIME} /etc/localtime
@@ -65,6 +70,7 @@ RUN <<EOF
 EOF
 
 RUN <<EOF
+  set -e
   apt-get update
   apt-get install -y sudo postgresql-client git
   apt install -y ${PHPIZE_DEPS} ${BUILD_DEPENDS}

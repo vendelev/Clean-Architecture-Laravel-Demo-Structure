@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="MessDetectorOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-  <component name="PHPCSFixerOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-  <component name="PHPCodeSnifferOptionsConfiguration">
-    <option name="highlightLevel" value="WARNING" />
-    <option name="transferred" value="true" />
-  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/backend/vendor/league/uri-interfaces" />
@@ -123,18 +113,23 @@
       <path value="$PROJECT_DIR$/backend/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/backend/vendor/brick/math" />
       <path value="$PROJECT_DIR$/backend/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/backend/vendor/ergebnis/json-schema-validator" />
+      <path value="$PROJECT_DIR$/backend/vendor/ergebnis/json-printer" />
+      <path value="$PROJECT_DIR$/backend/vendor/ergebnis/composer-normalize" />
+      <path value="$PROJECT_DIR$/backend/vendor/ergebnis/json" />
+      <path value="$PROJECT_DIR$/backend/vendor/ergebnis/json-pointer" />
+      <path value="$PROJECT_DIR$/backend/vendor/ergebnis/json-normalizer" />
+      <path value="$PROJECT_DIR$/backend/vendor/localheinz/diff" />
+      <path value="$PROJECT_DIR$/backend/vendor/marc-mabe/php-enum" />
+      <path value="$PROJECT_DIR$/backend/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/backend/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/backend/vendor/phpmd/phpmd" />
+      <path value="$PROJECT_DIR$/backend/vendor/pdepend/pdepend" />
+      <path value="$PROJECT_DIR$/backend/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/backend/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/backend/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/backend/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/backend/vendor/phpstan/phpstan" />
     </include_path>
-  </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
-  <component name="PhpStanOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-  <component name="PhpUnit">
-    <phpunit_settings>
-      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/backend/phpunit.xml" custom_loader_path="$PROJECT_DIR$/backend/vendor/autoload.php" use_configuration_file="true" />
-    </phpunit_settings>
-  </component>
-  <component name="PsalmOptionsConfiguration">
-    <option name="transferred" value="true" />
   </component>
 </project>
