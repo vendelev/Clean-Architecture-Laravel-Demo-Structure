@@ -10,6 +10,7 @@ services:
         - GID=${GID}
     volumes:
       - ./backend:/var/www/backend/
+      - ./backend/storage/phpunit:/opt/phpstorm-coverage
     ports:
       - "8084:80"
     healthcheck:

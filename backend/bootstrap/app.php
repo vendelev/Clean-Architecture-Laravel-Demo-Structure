@@ -19,6 +19,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
         //
     })->create();
 
-$app->useAppPath('src/');
+$app->useAppPath(base_path('src'));
 
 return $app;
