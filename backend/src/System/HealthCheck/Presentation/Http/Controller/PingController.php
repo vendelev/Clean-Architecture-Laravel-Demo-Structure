@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\Ping\Presentation\Http\Controller;
+namespace CleanStructure\System\HealthCheck\Presentation\Http\Controller;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;

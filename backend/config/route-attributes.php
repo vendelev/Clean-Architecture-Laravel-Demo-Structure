@@ -17,7 +17,7 @@ return [
      * Optionally, you can specify group configuration by using key/values
      */
     'directories' => [
-        app_path('System/Ping/Presentation/Http/Controller'),
+        app_path('System/HealthCheck/Presentation/Http/Controller'),
         /*
         app_path('Http/Controllers/Api') => [
            'prefix' => 'api',
