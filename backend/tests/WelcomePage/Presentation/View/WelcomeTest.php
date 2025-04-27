@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\WelcomePage\Application\Responder\Template;
+namespace Tests\WelcomePage\Presentation\View;
 
 use Tests\TestCase;
 
