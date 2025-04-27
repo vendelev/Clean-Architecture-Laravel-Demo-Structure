@@ -14,6 +14,7 @@
     <file>src/</file>
     <file>tests/</file>
     <file>database/</file>
+    <exclude-pattern>*blade.php</exclude-pattern>
 
 
     <rule ref="PSR1"/>

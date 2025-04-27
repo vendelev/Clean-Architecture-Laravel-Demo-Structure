@@ -25,6 +25,4 @@ final class OpenApiControllerTest extends TestCase
         Artisan::call('l5-swagger:generate');
         self::assertFileExists($filePath);
     }
-
-
 }
