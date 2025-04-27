@@ -14,6 +14,7 @@ help:
 	$(TAB) make test-php - Выполнить PHP проверки
 
 install:
+	${DOCKER_COMPOSE} build
 	${DOCKER_COMPOSE} up -d
 	cp backend/.env.example backend/.env
 	cp backend/.env.example backend/.env.testing
