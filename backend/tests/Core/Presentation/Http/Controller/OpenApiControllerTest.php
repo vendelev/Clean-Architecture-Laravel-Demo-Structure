@@ -23,6 +23,11 @@ final class OpenApiControllerTest extends TestCase
         }
 
         Artisan::call('l5-swagger:generate');
-        self::assertFileExists($filePath);
+        $url = Config::get('l5-swagger.defaults.routes.docs');
+
+        $response = $this->get('/' . $url);
+        $response->assertStatus(200);
+        self::assertStringEqualsFile($filePath, $response->content());
+        self::assertArrayHasKey('/ping', $response->json()['paths']);
     }
 }

@@ -9,7 +9,7 @@ use Tests\TestCase;
 class PingControllerTest extends TestCase
 {
     /**
-     * Проверим вывод pong
+     * Тестируем проверку доступности сервера
      */
     public function testPing(): void
     {

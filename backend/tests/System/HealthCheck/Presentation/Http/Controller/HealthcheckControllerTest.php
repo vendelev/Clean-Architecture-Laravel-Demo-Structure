@@ -9,7 +9,7 @@ use Tests\TestCase;
 class HealthcheckControllerTest extends TestCase
 {
     /**
-     * Проверим выполнение healthcheck
+     * Тестируем выполнение проверки работоспособности сервера
      */
     public function testStatus(): void
     {
