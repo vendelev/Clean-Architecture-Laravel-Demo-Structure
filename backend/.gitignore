@@ -5,6 +5,8 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/.phpcs-cache
+/storage/api-docs
 /vendor
 .env
 .env.backup

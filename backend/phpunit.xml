@@ -3,19 +3,20 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
+         cacheDirectory="storage/phpunit"
 >
     <testsuites>
-        <testsuite name="Unit">
-            <directory>tests/Unit</directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory>tests/Feature</directory>
+        <testsuite name="Module">
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <source>
         <include>
-            <directory>app</directory>
+            <directory>src</directory>
         </include>
+        <exclude>
+            <directory suffix=".blade.php">src</directory>
+        </exclude>
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
@@ -30,4 +31,15 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
     </php>
+    <coverage
+        ignoreDeprecatedCodeUnits="true"
+        disableCodeCoverageIgnore="true">
+        <report>
+            <text outputFile="storage/phpunit/coverage.txt" showOnlySummary="true"/>
+            <cobertura outputFile="storage/phpunit/cobertura.xml"/>
+        </report>
+    </coverage>
+    <logging>
+        <junit outputFile="storage/phpunit/junit.xml"/>
+    </logging>
 </phpunit>

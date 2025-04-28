@@ -1,0 +1,11 @@
+parameters:
+    level: 8
+    paths:
+        - bootstrap/
+        - config/
+        - src/
+        - tests/
+        - database/
+    excludePaths:
+    	- backend/bootstrap/cache/*
+    tmpDir: storage/phpstan
