@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\WelcomePage\Presentation\View;
+namespace Tests\ModuleSuite\WelcomePage\Presentation\View;
 
 use Tests\TestCase;
 

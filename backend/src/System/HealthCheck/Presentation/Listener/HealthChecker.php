@@ -15,7 +15,7 @@ final readonly class HealthChecker
     }
 
     /**
-     * Точка входа в модуль проверки доступности внешних ресурсов
+     * Точка входа в модуль проверки работоспособности внешних ресурсов
      *
      * @SuppressWarnings(UnusedFormalParameter)
      * @param DiagnosingHealth $event

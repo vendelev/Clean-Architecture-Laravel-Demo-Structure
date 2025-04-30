@@ -7,5 +7,14 @@ parameters:
         - tests/
         - database/
     excludePaths:
-    	- backend/bootstrap/cache/*
+    	- bootstrap/cache/*
     tmpDir: storage/phpstan
+services:
+   -
+       class: Tests\Architecture\CleanStructureTest
+       tags:
+           - phpat.test
+   -
+       class: Tests\Architecture\CleanArchitectureTest
+       tags:
+           - phpat.test

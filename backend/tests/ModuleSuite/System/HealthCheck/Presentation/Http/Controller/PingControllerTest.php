@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace System\HealthCheck\Presentation\Http\Controller;
+namespace Tests\ModuleSuite\System\HealthCheck\Presentation\Http\Controller;
 
 use Tests\TestCase;
 
 class PingControllerTest extends TestCase
 {
     /**
-     * Проверим вывод pong
+     * Тестируем проверку доступности сервера
      */
     public function testPing(): void
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Core\Infrastructure\Symfony;
+namespace Tests\ModuleSuite\Core\Infrastructure\Symfony;
 
 use CleanStructure\Core\Domain\SerializerInterface;
 use CleanStructure\Core\Infrastructure\Symfony\SerializerDecorator;

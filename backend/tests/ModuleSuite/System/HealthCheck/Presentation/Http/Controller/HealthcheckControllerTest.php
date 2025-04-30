@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\System\HealthCheck\Presentation\Http\Controller;
+namespace Tests\ModuleSuite\System\HealthCheck\Presentation\Http\Controller;
 
 use Tests\TestCase;
 
 class HealthcheckControllerTest extends TestCase
 {
     /**
-     * Проверим выполнение healthcheck
+     * Тестируем выполнение проверки работоспособности сервера
      */
     public function testStatus(): void
     {

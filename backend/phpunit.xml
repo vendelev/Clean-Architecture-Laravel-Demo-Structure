@@ -7,7 +7,7 @@
 >
     <testsuites>
         <testsuite name="Module">
-            <directory>tests</directory>
+            <directory>tests/ModuleSuite</directory>
         </testsuite>
     </testsuites>
     <source>
