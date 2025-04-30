@@ -23,7 +23,9 @@
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.8",
         "pdepend/pdepend": "3.x-dev#625560a5915047e6b2a1047579eb1505709ababc@dev",
+        "phpat/phpat": "^0.11.4",
         "phpmd/phpmd": "dev-3.x-xdebug-option@dev",
+        "phpstan/extension-installer": "^1.4.3",
         "phpstan/phpstan": "^2.1.13",
         "phpunit/phpunit": "^11.5.18",
         "squizlabs/php_codesniffer": "^3.12.2"
@@ -34,8 +36,7 @@
         "psr-4": {
             "CleanStructure\\": "src/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Tests\\": "tests/"
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
@@ -47,7 +48,8 @@
         "allow-plugins": {
             "ergebnis/composer-normalize": true,
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         },
         "cache-dir": "./storage",
         "optimize-autoloader": true,
