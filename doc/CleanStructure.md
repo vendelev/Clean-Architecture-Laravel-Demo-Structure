@@ -1,7 +1,7 @@
 # The Clean Structure - Универсальная структура PHP-проекта на примере Laravel
 
 К написанию этой статьи меня подтолкнуло изучение архитектурных подходов для [Vue.js-проектов](https://vue-faq.org/ru/development/project-structure.html).
-А вдохновила, детально описана методология [Feature-Sliced Design](https://feature-sliced.github.io/documentation/ru/).
+А вдохновила, детально описанная методология [Feature-Sliced Design](https://feature-sliced.github.io/documentation/ru/).
 
 К сожалению, PHP-сообществу очень не хватает подобных развернутых рекомендаций, да и вообще, каких-то общепризнанных стандартных подходов в структуре проекта. 
 
@@ -93,7 +93,7 @@
 Ведь хороший тест должен проверять результат только одного действия. Даже если это End-To-End тест.
 
 Я не буду подробно останавливаться на том как правильно строить архитектуру проекта и что такое хороший тест. 
-Об этом уже неоднократно писали, например, вот:
+Об этом уже неоднократно писали:
 - [Архитектура сложных веб-приложений. С примерами на Laravel](https://github.com/adelf/acwa_book_ru)
 - [Принципы юнит-тестирования](https://youtu.be/LkrqqpkKIXE?si=cX_gRLKpxjM1Ih3e)
 - [Блеск и нищета модели предметной области](https://habr.com/ru/companies/jugru/articles/503868/)
@@ -103,7 +103,7 @@
 
 В каких случаях не стоит "заморачиваться" и менять/усложнять базовые правила выбранного фреймворка:
 - Когда у вас простой проект (кол-во контроллеров и моделей, условно!, 8-10 штук),
-- Когда проект не собирается развиваться (например, сайт-визитка, лендинг, блог и тп).
+- Когда проект не собирается развиваться (сайт-визитка, лендинг, блог и тп).
 
 Следует задуматься над структурой кода, когда проект:
 - Имеет сложную логику (содержит несколько десятов модулей и компонентов),
@@ -112,7 +112,7 @@
 ----
 
 ## Может уже есть готовые подходы?
-Да, попытки были и не раз, например:
+Да, попытки были и не раз:
 - [Laravel 8 Clean Architecture Example](https://niceprogrammer.com/laravel-8-clean-architecture-example/)
 - [DDD, Hexagonal, Onion, Clean, CQRS… как я собрал всё это вместе](https://habr.com/ru/articles/427739/)
 - [Domain Driven Design with Symfony: A Folder Structure](https://www.fabian-kleiser.de/blog/domain-driven-design-with-symfony-a-folder-structure/)
@@ -149,13 +149,14 @@
 - [PHP Architecture Tester](https://github.com/carlosas/phpat/)
 - [PHPArkitect](https://github.com/phparkitect/arkitect)
 - [PHPCleanArchitecture](https://github.com/Chetkov/php-clean-architecture)
-- [Architecture Testing](https://pestphp.com/docs/arch-testing) - надстройка над [PHPUnit Application Architecture Test](https://github.com/ta-tikoma/phpunit-architecture-test)
+- [Pest Architecture Testing](https://pestphp.com/docs/arch-testing) - надстройка над [PHPUnit Application Architecture Test](https://github.com/ta-tikoma/phpunit-architecture-test)
+- [Modulite](https://vkcom.github.io/modulite/)
+- [PhpMetrics](https://github.com/phpmetrics/PhpMetrics)
 
 А вот хороших статей на эту тему мало:
-- [Чистая архитектура на PHP. Как её измерять и контролировать?](https://habr.com/ru/articles/504590/)
 - [Применение статических анализаторов архитектуры на примере гексагональной архитектуры](https://habr.com/ru/companies/docdoc/articles/856978/)
-- [Чистая архитектура на PHP. Как её измерять и контролировать?](https://habr.com/ru/articles/504590/)
-  - [PHPCleanArchitecture — Что нового?](https://habr.com/ru/articles/686236/)
+- [Чистая архитектура на PHP. Как её измерять и контролировать?](https://habr.com/ru/articles/504590/) и [PHPCleanArchitecture — Что нового?](https://habr.com/ru/articles/686236/)
+- [Честные модули внутри PHP: теперь они существуют](https://habr.com/ru/companies/vk/articles/705998/)
 
 ----
 
@@ -181,7 +182,7 @@
   - **Команды** - Создание, Изменение и Удаление данных (только синхронное, много получателей)
 
 Материалы для самостоятельного изучения:
-- [CQRS на практике](https://blog.byndyu.ru/2014/07/command-and-query-responsibility.html)
+- [CQRS на практике: Эволюция кода от Repository до CQRS](https://blog.byndyu.ru/2014/07/command-and-query-responsibility.html)
 - [DTO vs POCO vs Value Object](https://habr.com/ru/articles/268371/)
 - [Is it a DTO or a Value Object?](https://matthiasnoback.nl/2022/09/is-it-a-dto-or-a-value-object/)
 - [Заблуждения Clean Architecture](https://habr.com/ru/companies/mobileup/articles/335382/)
@@ -211,18 +212,18 @@
 ### Универсальная структура папок и набор "формальных" правил: что и за что отвечает, и в какой папке создается файл?
 - **/src**
   - **Core** - Ядро приложения, то от чего зависит работа большинства модулей, и код можно вынести в самостоятельную composer-библиотеку.
-    Например, общепроектные события или исключения. Структура аналогична **компоненту**
+    Какие-то общепроектные события, исключения или обертки над фреймворком и vendor. Структура аналогична **компоненту**
   - **/%Название Модуля/Группы модулей%**
     - **/%Название Подмодуля/Компонента%**
       - /**Application** - Реализация любой бизнес-логики
-        - /**Command** - Изменение данных во внешних системах. Например, БД
-        - /**Dto** - Объекты для передачи из **UseCase** в **Command**, **Query**, **Query** и обратно (паттерн DataMapper)
+        - /**Command** - Изменение данных во внешних системах. Например, **_БД_**
+        - /**Dto** - Объекты для передачи из **UseCase** в **Command**, **Query**, **Query** и обратно
         - /**Factory** - Фабричные классы для создания Dto, Response, ValueObject
         - /**Responder** - Всё что требует специальной генерации контента вместо json для ответа пользователю
           - /**Template** - email-шаблоны, Excel/Word-шаблоны, сообщения в Telegram
-          - **%Название.php%** - Какой-то генератор ответа либо выбор стратегии для генерации ответа. Пример, [CreateTaxExcelReport.php](..???..)
+          - **%Название.php%** - Какой-то генератор ответа либо выбор стратегии для генерации ответа. Например, **_CreateTaxExcelReport.php_**
         - /**Service** - Самодостаточный функционал
-          - **%Название.php%** - Какая-то уникальная реализация логики. Например, калькулятор стоимости услуг или [JwtToken.php](..???..)
+          - **%Название.php%** - Какая-то уникальная реализация логики. Например, **_калькулятор ABC-анализа_**
         - /**Query** - Получение данных из внешних систем. Например, БД
         - /**UseCase** - Варианты использования приложения, те обработка действий, которые выполняет пользователь
       - /**Domain** - Предметная область. Обычно все эти объекты доступны во вне модуля, как публичное API модуля (Контракт) 
@@ -236,7 +237,7 @@
         - /**ValueObject** - [Узкоспециализированный DTO с валидацией](https://github.com/adelf/acwa_book_ru/blob/master/manuscript/6-validation.md#value-objects)
         - %**Интерфейс**.php% - API (контракт) для взаимодействия между модулями или для инверсии зависимости между слоями модуля
       - /**Infrastructure** - Здесь собран функционал для реализации подхода [Anti-corruption layer](https://gist.github.com/AleksandrKonst/ac6c11e684dd5d89a39e774ed04b309c#4-%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C-anticorruption-layer) и [Framework Agnostic](https://telegra.ph/Framework-Agnostic-dlinoj-v-12-let-03-05)
-        - /**Adapter** - Реализация интерфейсов из **Domain** для взаимодействия из **Application** с другими модулями/компонентами, Пример, [GetJwtPlayLoad.php](..??..)
+        - /**Adapter** - Реализация интерфейсов из **Domain** для взаимодействия из **Application** с другими модулями/компонентами/vendor
         - /**%Название внешней библиотеки%** - Адаптеры, упрощающие взаимодействие с библиотеками из vendor. Пример, [SerializerDecorator](../backend/src/Core/Infrastructure/Symfony/SerializerDecorator.php)
       - /**Presentation** - Часть фреймворка для обеспечения запуска и завершения приложения, или точки входа и выхода в модуле
         - /**Config** - Конфигурационные файлы
@@ -249,10 +250,12 @@
           - /**View** - Html-шаблоны
         - /**Listener** - Обработчики событий (https://laravel.su/docs/12.x/events#opredelenie-slusatelei)
 - /**tests**
-  - /**Stub** - Все что требуется для выполнения тестов. Например, универсальный fake-jwt
-  - /**%Название Модуля%**
-    - /**%Название Подмодуля/Компонента%**
-      - ...
+  - /**Architecture** - Архитектурные тесты 
+  - /**Stub** - Все что требуется для выполнения тестов. Например, **_универсальный fake-jwt_**
+  - /**Suite** - [Набор тестов](https://testengineer.ru/test-suite) для нашего приложения
+    - /**%Название Модуля%**
+      - /**%Название Подмодуля/Компонента%**
+        - ...
   - **TestCase.php** - Абстрактный родитель-обертка над фреймворком
 
 Предложенный вариант, это "максимальная" сложность одного модуля.
@@ -261,14 +264,14 @@
 ### Примеры реализации
 Я создал [демо-проект](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure), чтобы на почти реальных примерах показать универсальность предложенной структуры папок.
 
-#### Например, есть задача проверять, что ресурс доступен, аля ping, только через HTTP. 
+#### Есть задача проверять, что ресурс доступен, аля ping, только через HTTP. 
 Те каждую секунду будет HTTP запрос.
 Для этого достаточно будет 1-го файла:
 - [Presentation/Http/Controller/PingController](../backend/src/System/HealthCheck/Presentation/Http/Controller/PingController.php)
 
 #### А теперь давайте подумаем, какая будет структура для задачи "Проверки состояния DB в проекте". 
 К примеру, такая проверка нужна 1 раз в минуту.
-Тут уже потребуется более сложная логика и, например, для Laravel будет вот такая [структура](../backend/src/System/HealthCheck):
+Тут уже потребуется более сложная логика и для Laravel будет вот такая [структура](../backend/src/System/HealthCheck):
 - Application/Command/CheckDbWriter.php
 - Application/Query/CheckDbReader.php
 - Application/UseCase/DbHealthUseCase.php
@@ -294,33 +297,24 @@
 К сожалению, при такой группировке начинают размываться границы между слоями внутри модуля. 
 В данном примере это не критично. НО:
 1. Если будет не опытный разраб, реализация бизнес логики может оказаться в контроллере, вплоть до запросов к БД. И это придется отслеживать на уровне Code Review.
-2. Если модуль усложняется, например, вывод аналитической информации со сложными фильтрами, экспортом и тп, то выделение подмодулей становиться крайне сложным. 
+2. Если модуль усложняется, допустим это вывод аналитической информации со сложными фильтрами, экспортом и тп, то выделение подмодулей становиться крайне сложным. 
 Будет очень много взаимосвязей между модулями и вместо упрощения получится сильная связанность. 
-
-#### Контроль
-..???..
-
-https://github.com/dykyi-roman/enterprise-skeleton/blob/symfony/tools/deptrac/deptrac-domain.yaml
-https://bestofphp.com/repo/carlosas-phpat-php-code-analysis
 
 ----
 
-## Слои и зависимости
-..???..
-
-[Связывая Контексты: Руководство по Эффективному Взаимодействию](https://habr.com/ru/articles/892250/)
-
-..???..
-
+## Зависимости и контроль
+Напомню общий принцип инверсии зависимостей "Чистой архитектуры"
 ![CleanArchitectureExt.png](CleanArchitectureExt.png)
 
-### Для себя я сформулировал следующие правила.
+Почему надо контролировать зависимости между слоями и какие способы взаимодействия между модулями (контекстами) существуют хорошо освещено в статье [Связывая Контексты: Руководство по Эффективному Взаимодействию](https://habr.com/ru/articles/892250/)
+
+### Для себя я сформулировал следующие упрощенные правила.
 
 1. Не усложняй и так всё сложно! 
-2. Между слоями существуют следующие зависимости:
+2. Между слоями существуют [следующие зависимости](../backend/tests/Architecture/CleanArchitectureTest.php):
    - **Presentation**, тк это часть фреймворка, может использовать **Infrastructure**, **Application** и **Domain** (и свой и чужой)
    - **Infrastructure** может использовать только **Application** и **Domain** (и свой и чужой)
-   - **Application** может использовать **Domain** (только свой)
+   - **Application** может использовать **Domain** (желательно, только свой)
    - **Domain** может использовать только **Domain** (и свой и чужой)
 3. **UseCase** - не может использовать другой **UseCase**, тк теряется "простота". Но может агрегировать в себя **Query** и **Command**
 4. **Interactor** - не должен использовать другой **Interactor**, тк, скорее всего, не правильно декомпозированы UseCase. **Но** может агрегировать в себя **Query**, **Command** и **UseCase**
