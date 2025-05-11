@@ -165,7 +165,7 @@
 За годы практики у меня сформировался боле-менее универсальный подход и я называл его: "**Чистая структура**" (The Clean Structure).
 Фактически это та же группировка по типу файлов, только обернутая в модульность и разделенная по архитектурным слоям.
 
-Подобное разделение можно встретить в каждом фреймворке: [Package в Laravel](https://laravel.com/docs/12.x/packages), [Bundle в Symfony](https://symfony.com/doc/current/bundles.html), [Module в Yii 2.0](https://www.yiiframework.com/doc/guide/2.0/ru/structure-modules), [Module в CodeIgniter](https://codeigniter.com/user_guide/general/modules.html), [Plugin в CakePHP](https://book.cakephp.org/5/en/plugins.html), [Module в Laminas](https://docs.laminas.dev/tutorials/getting-started/modules/). Но есть существенное отличие - в модуле нет разделения на слои, есть разделение только по типу файлов. 
+Подобное разделение можно встретить в каждом фреймворке: [Package в Laravel](https://laravel.com/docs/12.x/packages), [Bundle в Symfony](https://symfony.com/doc/current/bundles.html), [Module в Yii 2.0](https://www.yiiframework.com/doc/guide/2.0/ru/structure-modules), [Module в CodeIgniter](https://codeigniter.com/user_guide/general/modules.html), [Plugin в CakePHP](https://book.cakephp.org/5/en/plugins.html), [Module в Laminas](https://docs.laminas.dev/tutorials/getting-started/modules/). Но есть существенное отличие - нет разделения на слои, есть разделение только по типу файлов. 
 
 ### Основные термины и понятия
 Как я писал выше: очень важно, чтобы понимать друг друга, говорить единообразно.
@@ -212,10 +212,10 @@
         - /**Event** - Дополнительные действия/уведомления, возникающие в ходе выполнения **UseCase**. Частный случай Dto.
         - /**Exception** - Исключительные сообщения во вне об ошибке в **Application**.
         - /**Entity** - Dto для описания структуры таблицы, используется в **Command** для создания записи в БД или требуется для ORM.
-        - /**Request** - "Входящие" Dto в **Controller** и **Console**.
+        - /**Request** - "Входящие" Dto в **Controller** и **Console**, часто со встроенной валидацией данных..
         - /**Response** - "Исходящие" Dto в **Controller**.
         - /**Validation** - Бизнес требования по валидации Dto.
-        - /**ValueObject** - [Узкоспециализированный DTO с валидацией](https://github.com/adelf/acwa_book_ru/blob/master/manuscript/6-validation.md#value-objects), часто с встроенной валидацией данных.
+        - /**ValueObject** - [Узкоспециализированный DTO с валидацией](https://github.com/adelf/acwa_book_ru/blob/master/manuscript/6-validation.md#value-objects), часто со встроенной валидацией данных.
         - %**Интерфейс**.php% - API (контракт) для взаимодействия между модулями или для инверсии зависимости между слоями модуля.
       - /**Infrastructure** - Здесь собран функционал для реализации подхода [Anti-corruption layer](https://gist.github.com/AleksandrKonst/ac6c11e684dd5d89a39e774ed04b309c#4-%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C-anticorruption-layer) и [Framework Agnostic](https://telegra.ph/Framework-Agnostic-dlinoj-v-12-let-03-05).
         - /**Adapter** - Реализация интерфейсов из **Domain** для взаимодействия из **Application** с другими модулями/компонентами/vendor.
@@ -279,7 +279,7 @@
 В данном примере это не критично. НО:
 1. Если будет не опытный разраб, реализация бизнес логики может оказаться в контроллере, вплоть до запросов к БД. И это придется отслеживать на уровне Code Review.
 2. Если модуль усложняется, допустим это вывод аналитической информации со сложными фильтрами, экспортом и тп, то выделение подмодулей становиться крайне сложным. 
-Будет очень много взаимосвязей между модулями и вместо упрощения получится сильная связанность. 
+Может получиться очень много взаимосвязей между модулями и вместо упрощения будет сильная связанность. 
 
 ----
 
