@@ -252,11 +252,11 @@
 
 #### 2. Например, есть задача: проверять, что ресурс доступен (аля ping, только через HTTP)
 Те каждую секунду будет HTTP запрос.
-Для реализации этого функционала будет достаточно создать один файл: [Presentation/Http/Controller/PingController](../backend/src/System/HealthCheck/Presentation/Http/Controller/PingController.php)
+Для реализации этого функционала будет достаточно создать один файл: [Presentation/Http/Controller/PingController](../backend/src/HealthCheck/Presentation/Http/Controller/PingController.php)
 
 #### 3. А теперь давайте подумаем, какая будет структура для задачи "Проверки доступности и работоспособности DB в проекте" 
 К примеру, такая проверка нужна 1 раз в минуту.
-Тут уже потребуется более сложная логика и для Laravel будет вот такая [структура](../backend/src/System/HealthCheck):
+Тут уже потребуется более сложная логика и для Laravel будет вот такая [структура](../backend/src/HealthCheck):
 - Application/Command/CheckDbWriter.php
 - Application/Query/CheckDbReader.php
 - Application/UseCase/DbHealthUseCase.php
