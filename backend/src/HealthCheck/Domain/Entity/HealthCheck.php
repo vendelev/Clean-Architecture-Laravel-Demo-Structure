@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\HealthCheck\Domain\Entity;
+namespace CleanStructure\HealthCheck\Domain\Entity;
 
 use Symfony\Component\Serializer\Attribute\SerializedName;
 

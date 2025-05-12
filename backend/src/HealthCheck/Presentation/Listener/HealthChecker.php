@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\HealthCheck\Presentation\Listener;
+namespace CleanStructure\HealthCheck\Presentation\Listener;
 
-use CleanStructure\System\HealthCheck\Application\UseCase\DbHealthUseCase;
+use CleanStructure\HealthCheck\Application\UseCase\DbHealthUseCase;
 use Illuminate\Foundation\Events\DiagnosingHealth;
 
 final readonly class HealthChecker

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\HealthCheck\Presentation\Config;
+namespace CleanStructure\HealthCheck\Presentation\Config;
 
-use CleanStructure\System\HealthCheck\Presentation\Listener\HealthChecker;
+use CleanStructure\HealthCheck\Presentation\Listener\HealthChecker;
 use Illuminate\Foundation\Events\DiagnosingHealth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;

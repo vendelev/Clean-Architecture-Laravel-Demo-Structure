@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\HealthCheck\Application\Command;
+namespace CleanStructure\HealthCheck\Application\Command;
 
 use CleanStructure\Core\Domain\SerializerInterface;
-use CleanStructure\System\HealthCheck\Domain\Entity\HealthCheck;
+use CleanStructure\HealthCheck\Domain\Entity\HealthCheck;
 use Illuminate\Database\ConnectionResolverInterface;
 
 final readonly class CheckDbWriter

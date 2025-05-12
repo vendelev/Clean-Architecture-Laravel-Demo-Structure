@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\HealthCheck\Application\Query;
+namespace CleanStructure\HealthCheck\Application\Query;
 
 use CleanStructure\Core\Domain\SerializerInterface;
-use CleanStructure\System\HealthCheck\Domain\Entity\HealthCheck;
+use CleanStructure\HealthCheck\Domain\Entity\HealthCheck;
 use Illuminate\Database\ConnectionResolverInterface;
 
 final readonly class CheckDbReader
@@ -19,7 +19,7 @@ final readonly class CheckDbReader
     /**
      * Получить все записи
      *
-     * @return list<HealthCheck>
+     * @return list<\CleanStructure\HealthCheck\Domain\Entity\HealthCheck>
      */
     public function selectAllValues(): array
     {

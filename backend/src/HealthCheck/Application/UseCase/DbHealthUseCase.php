@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CleanStructure\System\HealthCheck\Application\UseCase;
+namespace CleanStructure\HealthCheck\Application\UseCase;
 
 use CleanStructure\Core\Domain\TransactionInterface;
-use CleanStructure\System\HealthCheck\Application\Command\CheckDbWriter;
-use CleanStructure\System\HealthCheck\Application\Query\CheckDbReader;
-use CleanStructure\System\HealthCheck\Domain\Entity\HealthCheck;
+use CleanStructure\HealthCheck\Application\Command\CheckDbWriter;
+use CleanStructure\HealthCheck\Application\Query\CheckDbReader;
+use CleanStructure\HealthCheck\Domain\Entity\HealthCheck;
 use RuntimeException;
 
 final readonly class DbHealthUseCase
