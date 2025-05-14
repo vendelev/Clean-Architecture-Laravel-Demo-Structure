@@ -35,11 +35,11 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
         working-directory: './backend'
       - name: 'Create .env'
-        run: cp backend/.env.example backend/.env
+        run: cp ./backend/.env.example backend/.env
       - name: 'Generate key'
         run: php ./backend/artisan key:generate
       - name: 'Run migrations'
-        run: php artisan migrate --force
+        run: php ./backend/artisan migrate --force
       - name: 'Run All tests'
         run: 'composer test'
         working-directory: './backend'
