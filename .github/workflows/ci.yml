@@ -15,7 +15,7 @@ env:
   php_extensions: 'ldap, redis, amqp-2.1.2, pgsql, pdo_pgsql, gd, bcmath, iconv, ctype, sockets, zip, soap, intl, pcntl, curl, opcache'
 
 jobs:
-  test:
+  tests:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: Setup PHP
+      - name: 'Setup PHP'
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
@@ -36,10 +36,10 @@ jobs:
         working-directory: './backend'
       - name: 'Create .env'
         run: cp backend/.env.example backend/.env
-      - name: 'Create .env.testing'
-        run: cp backend/.env backend/.env.testing
       - name: 'Generate key'
         run: php ./backend/artisan key:generate
+      - name: 'Run migrations'
+        run: php artisan migrate --force
       - name: 'Run All tests'
         run: 'composer test'
         working-directory: './backend'
