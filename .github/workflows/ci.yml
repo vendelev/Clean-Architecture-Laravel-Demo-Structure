@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+env:
+  php_extensions: 'ldap, redis, amqp-2.1.2, pgsql, pdo_pgsql, gd, bcmath, iconv, ctype, sockets, zip, soap, intl, pcntl, curl, opcache'
+
+jobs:
+  test:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest']
+        php-versions: ['8.4']
+        phpunit-versions: ['11.5.18']
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: '${{ env.php_extensions }}'
+          tools: composer:v2
+      - name: 'Install PHP dependencies with Composer'
+        run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
+        working-directory: './backend'
+      - name: 'Create .env'
+        run: cp backend/.env.example backend/.env
+      - name: 'Create .env.testing'
+        run: cp backend/.env backend/.env.testing
+      - name: 'Generate key'
+        run: php ./backend/artisan key:generate
+      - name: 'Run All tests'
+        run: 'composer test'
+        working-directory: './backend'
