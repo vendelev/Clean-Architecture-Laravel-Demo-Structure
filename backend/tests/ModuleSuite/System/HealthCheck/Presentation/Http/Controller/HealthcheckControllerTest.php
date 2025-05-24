@@ -6,7 +6,7 @@ namespace Tests\ModuleSuite\System\HealthCheck\Presentation\Http\Controller;
 
 use Tests\TestCase;
 
-class HealthcheckControllerTest extends TestCase
+final class HealthcheckControllerTest extends TestCase
 {
     /**
      * Тестируем выполнение проверки работоспособности сервера

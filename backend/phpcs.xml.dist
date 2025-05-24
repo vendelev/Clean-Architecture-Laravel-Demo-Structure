@@ -52,7 +52,6 @@
     <rule ref="Generic.Files.OneInterfacePerFile"/>
     <rule ref="Generic.Files.OneTraitPerFile"/>
 
-    <rule ref="Generic.Formatting.NoSpaceAfterCast"/>
     <!--Каждое выражение на новой строке-->
     <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
 
@@ -105,7 +104,7 @@
     <rule ref="Squiz.Scope.StaticThisUsage"/>
 
     <rule ref="Squiz.WhiteSpace.CastSpacing"/>
-    <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+    <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
     <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
     <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
@@ -125,11 +124,4 @@
     <rule ref="PEAR.Functions.ValidDefaultValue"/>
     <!--после = значение на той же строке-->
     <rule ref="PEAR.Formatting.MultiLineAssignment"/>
-
-    <!--Гарантирует, что self и static не используются для вызова публичных методов.-->
-    <rule ref="MySource.Channels.DisallowSelfActions"/>
-    <!--Гарантирует, что система не вызывает саму себя.-->
-    <rule ref="MySource.Channels.IncludeOwnSystem"/>
-    <!--Обеспечивает, что системы и типы используются, если они включены.-->
-    <rule ref="MySource.Channels.UnusedSystem"/>
 </ruleset>

@@ -18,8 +18,6 @@ final readonly class HealthChecker
      * Точка входа в модуль проверки работоспособности внешних ресурсов
      *
      * @SuppressWarnings(UnusedFormalParameter)
-     * @param DiagnosingHealth $event
-     * @return bool
      */
     public function handle(DiagnosingHealth $event): bool
     {
