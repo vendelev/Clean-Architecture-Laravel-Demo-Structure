@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\ModuleSuite\System\HealthCheck\Application\UseCase;
+namespace Tests\ModuleSuite\HealthCheck\Application\UseCase;
 
 use CleanStructure\HealthCheck\Application\UseCase\DbHealthUseCase;
 use Tests\TestCase;

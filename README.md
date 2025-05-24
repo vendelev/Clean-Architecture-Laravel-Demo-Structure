@@ -14,4 +14,5 @@ make install
 
 После сборки образа и старта проекта будут доступны страницы:
 - http://localhost:8084/
+- http://localhost:8084/healthcheck
 - http://localhost:8084/api/documentation/
