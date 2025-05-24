@@ -10,7 +10,7 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Tests\TestCase;
 
-class SerializerDecoratorTest extends TestCase
+final class SerializerDecoratorTest extends TestCase
 {
     /**
      * Проверим правильность подключения в ServiceProvider

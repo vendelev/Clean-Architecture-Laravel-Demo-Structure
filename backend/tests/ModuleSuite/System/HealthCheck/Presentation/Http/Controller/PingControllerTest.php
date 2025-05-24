@@ -6,7 +6,7 @@ namespace Tests\ModuleSuite\System\HealthCheck\Presentation\Http\Controller;
 
 use Tests\TestCase;
 
-class PingControllerTest extends TestCase
+final class PingControllerTest extends TestCase
 {
     /**
      * Тестируем проверку доступности сервера

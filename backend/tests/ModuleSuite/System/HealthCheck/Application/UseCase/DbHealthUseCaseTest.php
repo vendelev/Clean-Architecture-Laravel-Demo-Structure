@@ -7,7 +7,7 @@ namespace Tests\ModuleSuite\System\HealthCheck\Application\UseCase;
 use CleanStructure\HealthCheck\Application\UseCase\DbHealthUseCase;
 use Tests\TestCase;
 
-class DbHealthUseCaseTest extends TestCase
+final class DbHealthUseCaseTest extends TestCase
 {
     /**
      * Проверим позитивный сценарий

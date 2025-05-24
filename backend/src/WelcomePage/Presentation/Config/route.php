@@ -7,6 +7,4 @@ use Illuminate\Support\Facades\View;
 
 View::addLocation(app_path() . '/WelcomePage/Presentation/Http/View');
 
-Route::get('/', static function () {
-    return view('welcome');
-});
+Route::get('/', static fn() => view('welcome'));
