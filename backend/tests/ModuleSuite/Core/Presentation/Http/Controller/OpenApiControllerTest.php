@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\ModuleSuite\Core\Presentation\Http\Controller;
 
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Contracts\Console\Kernel;
 use Tests\TestCase;
 
 final class OpenApiControllerTest extends TestCase
@@ -15,15 +15,18 @@ final class OpenApiControllerTest extends TestCase
      */
     public function testGenerateOpenApiJsonFile(): void
     {
-        $path = Config::get('l5-swagger.defaults.paths.docs');
-        $file = Config::get('l5-swagger.documentations.default.paths.docs_json');
+        $config = $this->service(Config::class);
+        $kernel = $this->service(Kernel::class);
+
+        $path = $config->get('l5-swagger.defaults.paths.docs');
+        $file = $config->get('l5-swagger.documentations.default.paths.docs_json');
         $filePath = $path . DIRECTORY_SEPARATOR . $file;
         if (file_exists($filePath)) {
             unlink($filePath);
         }
 
-        Artisan::call('l5-swagger:generate');
-        $url = Config::get('l5-swagger.defaults.routes.docs');
+        $kernel->call('l5-swagger:generate');
+        $url = $config->get('l5-swagger.defaults.routes.docs');
 
         $response = $this->get('/' . $url);
         $response->assertStatus(200);

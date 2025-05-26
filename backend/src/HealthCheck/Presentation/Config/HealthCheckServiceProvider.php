@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace CleanStructure\HealthCheck\Presentation\Config;
 
 use CleanStructure\HealthCheck\Presentation\Listener\HealthChecker;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Foundation\Events\DiagnosingHealth;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
 final class HealthCheckServiceProvider extends ServiceProvider
@@ -16,6 +16,6 @@ final class HealthCheckServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Event::listen(events: [DiagnosingHealth::class], listener: HealthChecker::class);
+        $this->app->get(Dispatcher::class)->listen(events: [DiagnosingHealth::class], listener: HealthChecker::class);
     }
 }

@@ -12,6 +12,12 @@ use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 use Rector\ValueObject\PhpVersion;
 use Rector\Visibility\Rector\ClassConst\ChangeConstantVisibilityRector;
 use Rector\Visibility\Rector\ClassMethod\ExplicitPublicClassMethodRector;
+use RectorLaravel\Rector\Class_\AddExtendsAnnotationToModelFactoriesRector;
+use RectorLaravel\Rector\FuncCall\ArgumentFuncCallToMethodCallRector;
+use RectorLaravel\Rector\MethodCall\EloquentWhereRelationTypeHintingParameterRector;
+use RectorLaravel\Rector\MethodCall\EloquentWhereTypeHintClosureParameterRector;
+use RectorLaravel\Rector\MethodCall\ResponseHelperCallToJsonResponseRector;
+use RectorLaravel\Set\LaravelSetList;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -34,12 +40,19 @@ return RectorConfig::configure()
     ->withSets([
         SetList::DEAD_CODE,
         SetList::PRIVATIZATION,
+        LaravelSetList::LARAVEL_STATIC_TO_INJECTION,
+        LaravelSetList::LARAVEL_120,
     ])
     ->withRules([
         DeclareStrictTypesRector::class,
         ChangeConstantVisibilityRector::class,
         ExplicitPublicClassMethodRector::class,
         FinalizeTestCaseClassRector::class,
+        AddExtendsAnnotationToModelFactoriesRector::class,
+        ArgumentFuncCallToMethodCallRector::class,
+        EloquentWhereRelationTypeHintingParameterRector::class,
+        EloquentWhereTypeHintClosureParameterRector::class,
+        ResponseHelperCallToJsonResponseRector::class,
 
     ])
     ->withSkip([
