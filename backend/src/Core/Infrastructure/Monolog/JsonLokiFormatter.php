@@ -15,9 +15,9 @@ final class JsonLokiFormatter extends JsonFormatter
 
     public function format(LogRecord $record): string
     {
-        $recordData = new JsonFormatter()->normalizeRecord($record);
+        $recordData = (new JsonFormatter())->normalizeRecord($record);
         $recordData['traceID'] = $this->traceID;
 
-        return $this->toJson($recordData)."\n";
+        return $this->toJson($recordData) . "\n";
     }
 }
