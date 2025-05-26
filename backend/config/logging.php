@@ -6,6 +6,7 @@ use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
+use Monolog\Processor\WebProcessor;
 
 return [
 
@@ -104,7 +105,7 @@ return [
                 'stream' => 'php://stderr',
             ],
             'formatter' => env('LOG_STDERR_FORMATTER'),
-            'processors' => [PsrLogMessageProcessor::class],
+            'processors' => [PsrLogMessageProcessor::class, WebProcessor::class],
         ],
 
         'syslog' => [
