@@ -1,0 +1,58 @@
+services:
+  php-dev:
+    logging:
+      #https://grafana.com/docs/loki/latest/send-data/docker-driver/ (docker plugin install grafana/loki-docker-driver:3.3.2-arm64 --alias loki --grant-all-permissions)
+      driver: "loki"
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
+        loki-batch-size: "100"
+        loki-retries: 2
+        loki-max-backoff: 1000ms
+        loki-timeout: 1s
+
+
+  loki:
+    hostname: loki
+    image: grafana/loki:latest
+    container_name: loki
+    environment:
+      TZ: ${SYSTEM_TIMEZONE:-Europe/Moscow}
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./docker/loki-config.yaml:/etc/loki/local-config.yaml
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -q --tries=1 -O- http://localhost:3100/ready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - loki
+    command: -config.file=/etc/loki/local-config.yaml
+
+  grafana:
+    hostname: grafana
+    container_name: grafana
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - TZ=${SYSTEM_TIMEZONE:-Europe/Moscow}
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - loki
+    volumes:
+      - ./docker/grafana-loki.yaml:/etc/grafana/provisioning/datasources/loki.yaml
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -q --tries=1 -O- http://localhost:3000/api/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - loki
+
+networks:
+  loki:
+    driver: bridge

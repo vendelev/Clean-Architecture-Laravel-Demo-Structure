@@ -91,6 +91,10 @@
             "vendor/bin/phpcbf",
             "vendor/bin/rector process"
         ],
+        "init-test-db": [
+            "@php -r \"file_exists('database/database_test.sqlite') || touch('database/database_test.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
         "phpcs": "vendor/bin/phpcs",
         "phpmd": "vendor/bin/phpmd bootstrap,config/,src/,tests/,database/ text phpmd-ruleset.xml",
         "phpstan": "vendor/bin/phpstan --memory-limit=-1",
