@@ -30,7 +30,7 @@
         "larastan/larastan": "^3.4",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.8",
-        "pdepend/pdepend": "3.x-dev#625560a5915047e6b2a1047579eb1505709ababc@dev",
+        "pdepend/pdepend": "3.x-dev",
         "phpat/phpat": "^0.11.4",
         "phpmd/phpmd": "dev-3.x-xdebug-option@dev",
         "phpstan/extension-installer": "^1.4.3",
