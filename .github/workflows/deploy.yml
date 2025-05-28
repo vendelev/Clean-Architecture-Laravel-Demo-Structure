@@ -29,10 +29,12 @@ jobs:
           cache: yarn
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Checnge dir
+        run: cd doc
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --cwd ./doc
       - name: Build with VitePress
-        run: yarn docs:build
+        run: yarn docs:build --cwd ./doc
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
