@@ -48,3 +48,9 @@ log-up:
 
 log-down:
 	${DOCKER_COMPOSE} -f docker-compose.yaml -f docker-compose.log.yaml down
+
+doc-up:
+	${DOCKER_COMPOSE} -f docker-compose.doc.yaml up -d
+
+doc-down:
+	${DOCKER_COMPOSE} -f docker-compose.doc.yaml down

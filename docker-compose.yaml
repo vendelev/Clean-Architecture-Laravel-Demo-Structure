@@ -1,9 +1,9 @@
 services:
-  php-dev:
-    image: clean-architecture/laravel-demo-structure:0.1
+  laravel-demo:
+    image: clean-structure/laravel-demo:0.1
     restart: unless-stopped
     build:
-      context: docker
+      context: docker/php
       target: php-dev
       args:
         - UID=${UID}
