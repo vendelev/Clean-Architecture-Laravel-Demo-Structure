@@ -29,8 +29,6 @@ jobs:
           cache: yarn
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Checnge dir
-        run: cd doc
       - name: Install dependencies
         run: yarn install --cwd ./doc
       - name: Build with VitePress
