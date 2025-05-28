@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/Clean-Architecture-Laravel-Demo-Structure/',
   title: "The Clean Structure",
   description: "2222",
   lang: 'ru-RU',
