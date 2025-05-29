@@ -18,24 +18,24 @@ help:
 	$(TAB) make log-down - Выключить все контейнеры с логированием
 
 install:
-	${DOCKER_COMPOSE} build --no-cache
+	${DOCKER_COMPOSE} build
 	${DOCKER_COMPOSE} up -d
 	cp backend/.env.example backend/.env
 	cp backend/.env.example backend/.env.testing
-	${DOCKER_COMPOSE} exec php-dev composer install
-	${DOCKER_COMPOSE} exec php-dev php artisan key:generate
-	${DOCKER_COMPOSE} exec php-dev composer init-test-db
+	${DOCKER_COMPOSE} exec laravel-demo composer install
+	${DOCKER_COMPOSE} exec laravel-demo php artisan key:generate
+	${DOCKER_COMPOSE} exec laravel-demo composer init-test-db
 
 update:
 	${DOCKER_COMPOSE} down
 	git pull
-	${DOCKER_COMPOSE} build --no-cache
+	${DOCKER_COMPOSE} build
 	${DOCKER_COMPOSE} up -d
-	${DOCKER_COMPOSE} exec php-dev composer install
-	${DOCKER_COMPOSE} exec php-dev composer init-test-db
+	${DOCKER_COMPOSE} exec laravel-demo composer install
+	${DOCKER_COMPOSE} exec laravel-demo composer init-test-db
 
 test-php:
-	${DOCKER_COMPOSE} exec php-dev composer test
+	${DOCKER_COMPOSE} exec laravel-demo composer test
 
 up:
 	${DOCKER_COMPOSE} up -d
