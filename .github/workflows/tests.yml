@@ -40,6 +40,10 @@ jobs:
         run: php ./backend/artisan key:generate
       - name: 'Run migrations'
         run: php ./backend/artisan migrate --force
+      - name: 'Caching'
+        run: |
+          php artisan config:cache
+          php artisan event:cache
       - name: 'Run All tests'
         run: 'composer test'
         working-directory: './backend'

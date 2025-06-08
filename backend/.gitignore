@@ -8,6 +8,7 @@
 /storage/.phpcs-cache
 /storage/api-docs
 /storage/rector
+/storage/composer
 /vendor
 .env
 .env.backup
