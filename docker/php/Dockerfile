@@ -1,10 +1,10 @@
-ARG PHP_VERSION="8.4.5-cli-bookworm"
+ARG PHP_VERSION="8.4.8-cli-bookworm"
 ARG UNIT_VERSION="1.34.2"
-ARG XDEBUG_VERSION="3.4.2"
+ARG XDEBUG_VERSION="3.4.4"
 ARG LOCALTIME="Europe/Moscow"
 
-FROM composer:2.8.8 AS composer
-FROM mlocati/php-extension-installer:2.7.31 AS php-extension-installer
+FROM composer:2.8.9 AS composer
+FROM mlocati/php-extension-installer:2.8.1 AS php-extension-installer
 
 #####
 FROM php:${PHP_VERSION} AS unit_builder
@@ -26,10 +26,7 @@ EOF
 #####
 FROM php:${PHP_VERSION} AS php-base
 
-COPY --from=unit_builder /usr/sbin/unitd /usr/sbin/unitd
-COPY --from=unit_builder /usr/lib/unit/ /usr/lib/unit/
 COPY --from=php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-COPY --from=composer /usr/bin/composer /usr/bin/
 
 RUN <<EOF
   set -e
@@ -37,7 +34,7 @@ RUN <<EOF
   apt-get install -y zip unzip tzdata
   rm /etc/localtime
   ln -s /usr/share/zoneinfo/${LOCALTIME} /etc/localtime
-  install-php-extensions ldap redis amqp-2.1.2 pgsql pdo_pgsql gd bcmath iconv ctype sockets zip soap intl pcntl curl opcache
+  install-php-extensions ldap redis amqp-2.1.2 pgsql pdo_pgsql gd bcmath iconv ctype sockets zip soap intl pcntl curl opcache opentelemetry
   apt-get remove -q -y ${PHPIZE_DEPS} ${BUILD_DEPENDS}
   apt-get clean autoclean
   apt-get autoremove --yes
@@ -45,16 +42,18 @@ RUN <<EOF
   rm -rf /var/cache/apt/archives /tmp/* /var/tmp/*
 EOF
 
-COPY entrypoint.sh /entrypoint.sh
+COPY --from=unit_builder /usr/sbin/unitd /usr/sbin/unitd
+COPY --from=unit_builder /usr/lib/unit/ /usr/lib/unit/
+COPY --from=composer /usr/bin/composer /usr/bin/
+
+COPY --chmod=544 entrypoint.sh /entrypoint.sh
 COPY config.json /config.json
 
-RUN ln -s /dev/stdout /var/log/unit.log \
-    && mkdir -p /var/lib/unit \
-    && chmod 544 /entrypoint.sh
+RUN ln -s /dev/stdout /var/log/unit.log && mkdir -p /var/lib/unit
 
 WORKDIR /var/www/backend
 
-EXPOSE 8000
+EXPOSE 80
 
 #####
 FROM php-base AS php-dev
@@ -81,6 +80,7 @@ EOF
 
 RUN usermod -aG sudo www-data && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
+RUN echo "opentelemetry.attr_hooks_enabled = On" >> "${PHP_INI_DIR}/php.ini"
 RUN mkdir -p /var/www/backend/public && echo "<?php phpinfo();" > /var/www/backend/public/index.php
 
 USER www-data

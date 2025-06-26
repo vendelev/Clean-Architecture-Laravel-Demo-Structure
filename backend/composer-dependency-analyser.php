@@ -15,6 +15,11 @@ return (new Configuration())
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ], isDev: false)
+    ->ignoreErrorsOnPackage('open-telemetry/exporter-otlp', [ErrorType::UNUSED_DEPENDENCY])
+    ->ignoreErrorsOnPackage('open-telemetry/opentelemetry-auto-laravel', [ErrorType::UNUSED_DEPENDENCY])
+    ->ignoreErrorsOnPackage('open-telemetry/opentelemetry-logger-monolog', [ErrorType::UNUSED_DEPENDENCY])
+    ->ignoreErrorsOnPackage('open-telemetry/sdk', [ErrorType::UNUSED_DEPENDENCY])
+    ->ignoreErrorsOnPackage('open-telemetry/sem-conv', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('laravel/tinker', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('phpdocumentor/reflection-docblock', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('symfony/property-access', [ErrorType::UNUSED_DEPENDENCY]);
