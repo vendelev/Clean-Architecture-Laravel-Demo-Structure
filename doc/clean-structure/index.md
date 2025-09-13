@@ -210,12 +210,12 @@
         - /**Dto** - Объекты для передачи из **Infrastructure** и **Presentation** в **Application** и обратно.
         - /**Event** - Дополнительные действия/уведомления, возникающие в ходе выполнения **UseCase**.
         - /**Exception** - Исключительные сообщения во вне об ошибке в **Application**.
-        - /**Entity** - Dto для описания структуры таблицы, используется в **Command** для создания записи в БД или требуется для ORM.
+        - /**Entity** - Dto для описания структуры таблицы, используется в **Command** и **Repository** для создания записи в БД или требуется для ORM.
         - /**Request** - "Входящие" Dto в **Controller** и **Console**, часто со встроенной валидацией данных..
         - /**Response** - "Исходящие" Dto в **Controller**.
         - /**Validation** - Бизнес требования по валидации Dto.
         - /**ValueObject** - [Узкоспециализированный DTO с валидацией](https://github.com/adelf/acwa_book_ru/blob/master/manuscript/6-validation.md#value-objects), часто со встроенной валидацией данных.
-        - %**Интерфейс**.php% - API (контракт) для взаимодействия между модулями или для инверсии зависимости между слоями модуля.
+        - %**Интерфейс**.php% - API (контракт) для взаимодействия между модулями или для инверсии зависимости между слоями модуля, например, для **Repository**.
       - /**Infrastructure** - Здесь собран функционал для реализации подхода [Anti-corruption layer](https://gist.github.com/AleksandrKonst/ac6c11e684dd5d89a39e774ed04b309c#4-%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C-anticorruption-layer) и [Framework Agnostic](https://telegra.ph/Framework-Agnostic-dlinoj-v-12-let-03-05).
         - /**Adapter** - Реализация интерфейсов из **Domain** для взаимодействия из **Application** с другими модулями/vendor.
         - /**Repository** - [Упрощенный вариант CQS/CQRS для доступа к данным](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)
