@@ -112,6 +112,7 @@
 
 Но тесты нужны не только для проверки функционала. <br>
 Их можно и нужно использовать для получения метрик качества кода:
+![code-coverage.png](code-coverage.png)
 - [Run tests with code coverage](https://www.jetbrains.com/help/phpstorm/code-coverage.html)
 - [Улучшения покрытия PHP кода](https://habr.com/ru/companies/oleg-bunin/articles/519080)
 - [Анализ покрытия кода](https://phpunit-documentation-russian.readthedocs.io/ru/latest/code-coverage-analysis.html)
