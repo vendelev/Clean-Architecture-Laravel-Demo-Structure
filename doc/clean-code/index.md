@@ -13,6 +13,7 @@
 Намного удобнее все проверки проводить автоматически и единообразно для всех и не только в CI/CD, но и локально - в PHPStorm.<br>
 С роботом сложно спорить. :)<br>
 
+---
 ## Автоматизируй это
 Прежде всего нужно настроить максимально простой и удобный запуск проверок нашего кода.
 
@@ -39,6 +40,7 @@
 - для работы с Git и Docker использую Makefile, 
 - через PHPStorm запускаю команды из Composer scripts.
 
+---
 ## Анализируй это
 [Линтеры](https://practicum.yandex.ru/blog/chto-takoe-linter-v-programmirovanii/), в мире PHP больше известны под названием [статические анализаторы кода](https://kitp.netlify.app/docs/isrpo/lections/l_06/), помогают:
 - Обучать новых членов команды принятым стандартам
@@ -103,7 +105,8 @@
 Хорошие bundle'ы так же имеют команды для проверки, например:
 - **_bin/console doctrine:schema:validate_** - Проверка соответствия схемы в БД и файлов с mapping-ом
 
-## Проверяй это
+---
+## Тестируй это
 Чистый код - это не только ~~ценный мех~~ CodeStyle и TypeHint, но ещё и автоматические тесты.
 
 ### PHPUnit + Coverage
@@ -128,6 +131,7 @@
 - **_vendor/bin/composer-dependency-analyser_** - [Инструмент](https://github.com/shipmonk-rnd/composer-dependency-analyser) помогает выявлять скрытые зависимости в проекте. Подсказывает, что используются зависимости, которые установлены не на прямую в composer.json, но требует [настройки](https://github.com/clean-structure/Clean-Structure-Symfony-Example/blob/master/backend/composer-dependency-analyser.php)
 - **_composer outdated --strict --sort-by-age_** - Команда выводит список всех устаревших пакетов. Это помогает поддерживать зависимости в актуальном состоянии
 
+---
 ## Помогаторы
 ### Editorconfig
 [EditorConfig — Одни Настройки для всех Редакторов/IDE](https://habr.com/ru/articles/220131) - статья старая, но всё еще актуальная.
@@ -142,18 +146,16 @@
 Эти плагины существенно ускоряют написание кода и, одновременно, уменьшают количество опечаток:
 - [deep-assoc-completion](https://plugins.jetbrains.com/plugin/9927-deep-assoc-completion) - автодополнение ключей массивов
 - [PHP Annotations](https://plugins.jetbrains.com/plugin/7320-php-annotations) - Подсказки для аннотаций и атрибутов
-- [Docker](https://plugins.jetbrains.com/plugin/7724-docker) - У меня всё крутиться в Докере и этот плагин удобный интерфейс для работы с запущенными контейнерами
 - [Makefile](https://plugins.jetbrains.com/plugin/9333-makefile-language) - Подсветка синтаксиса и запуск команд
 - [Taskfile](https://plugins.jetbrains.com/plugin/17058-taskfile) - Подсветка синтаксиса и запуск команд
 - [Markdown](https://plugins.jetbrains.com/plugin/7793-markdown) - Я сторонник [Docs-as-Code](https://apptractor.ru/info/articles/docs-as-code.html). Этот плагин - упрощенный WYSIWYG
 - [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore) - Подсветка синтаксиса для .gitignore и подобных файлов
 - [Developer Tools](https://plugins.jetbrains.com/plugin/21904-developer-tools) - Куча мелких утилит, например, Base64 декодер.
 - [Rector Support](https://plugins.jetbrains.com/plugin/19718-rector-support) - Запуск Rector
+- [Docker](https://plugins.jetbrains.com/plugin/7724-docker) - У меня всё крутиться в Докере и этот плагин удобный интерфейс для работы с запущенными контейнерами
 
 И проверьте, что вот эти плагины включены
 ![php-tools.png](php-tools.png)
-
-Знаю, что есть разработчики предпочитающие использовать VSCode, приглашаю их поделиться в комментах своими подборками плагинов и практиками работы с PHP-проектами.
 
 ## PS
 Полный список команд с запуском проверок можно посмотреть в [composer.json](https://github.com/clean-structure/Clean-Structure-Symfony-Example/blob/master/backend/composer.json#L110)
@@ -163,6 +165,10 @@
 - [Статический анализ кода PHP](https://habr.com/ru/companies/otus/articles/676126/)
 - [Базовый набор инструментов PHP разработчика](https://www.youtube.com/watch?v=rU799SHViFc)
 
+---
 А какие вы используете инструменты для проверки качества вашего кода?
+
+---
+Знаю, что есть разработчики предпочитающие использовать VSCode, приглашаю их поделиться в комментах своими подборками плагинов и практиками работы с PHP-проектами.
 
 
