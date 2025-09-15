@@ -150,9 +150,6 @@
 - [Rector Support](https://plugins.jetbrains.com/plugin/19718-rector-support) - Запуск Rector
 - [Docker](https://plugins.jetbrains.com/plugin/7724-docker) - У меня всё крутиться в Докере и этот плагин удобный интерфейс для работы с запущенными контейнерами
 
-И проверьте, что вот эти плагины включены
-![php-tools.png](php-tools.png)
-
 ## PS
 Полный список команд с запуском проверок можно посмотреть в [composer.json](https://github.com/clean-structure/Clean-Structure-Symfony-Example/blob/master/backend/composer.json#L110)
 
