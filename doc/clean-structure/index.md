@@ -219,7 +219,7 @@
       - /**Infrastructure** - Здесь собран функционал для реализации подхода [Anti-corruption layer](https://gist.github.com/AleksandrKonst/ac6c11e684dd5d89a39e774ed04b309c#4-%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C-anticorruption-layer) и [Framework Agnostic](https://telegra.ph/Framework-Agnostic-dlinoj-v-12-let-03-05).
         - /**Adapter** - Реализация интерфейсов из **Domain** для взаимодействия из **Application** с другими модулями/vendor.
         - /**Repository** - [Упрощенный вариант CQS/CQRS для доступа к данным](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)
-        - /**%Название внешней библиотеки%** - Адаптеры, упрощающие взаимодействие с библиотеками из vendor. Пример, [SerializerDecorator](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/Core/Infrastructure/Symfony/SerializerDecorator.php).
+        - /**%Название внешней библиотеки%** - Адаптеры, упрощающие взаимодействие с библиотеками из vendor. Пример, [SerializerDecorator](https://github.com/clean-structure/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/Core/Infrastructure/Symfony/SerializerDecorator.php).
       - /**Presentation** - Часть фреймворка для обеспечения запуска и завершения приложения, или точки входа и выхода в модуле.
         - /**Config** - Конфигурационные файлы.
           - Обертка над получением значений из env (https://laravel.su/docs/12.x/configuration#konfiguraciia-okruzeniia, https://laravel.su/docs/12.x/packages#resursy).
@@ -244,18 +244,18 @@
 В реальной жизни, не требуется создавать все папки сразу.
 
 ### Примеры реализации
-Я создал [демо-проект](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure), чтобы на почти реальных примерах показать универсальность предложенной структуры папок.
+Я создал [демо-проект](https://github.com/clean-structure/Clean-Architecture-Laravel-Demo-Structure), чтобы на почти реальных примерах показать универсальность предложенной структуры папок.
 
 #### 1. Простая HTML-страница
-Яркий пример, как с помощью фреймворка создать быстро [WelcomePage](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/WelcomePage/Presentation) 
+Яркий пример, как с помощью фреймворка создать быстро [WelcomePage](https://github.com/clean-structure/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/WelcomePage/Presentation) 
 
 #### 2. Например, есть задача: проверять, что ресурс доступен (аля ping, только через HTTP)
 Те каждую секунду будет HTTP запрос.
-Для реализации этого функционала будет достаточно создать один файл: [Presentation/Http/Controller/PingController](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/HealthCheck/Presentation/Http/Controller/PingController.php)
+Для реализации этого функционала будет достаточно создать один файл: [Presentation/Http/Controller/PingController](https://github.com/clean-structure/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/HealthCheck/Presentation/Http/Controller/PingController.php)
 
 #### 3. А теперь давайте подумаем, какая будет структура для задачи "Проверки доступности и работоспособности DB в проекте" 
 К примеру, такая проверка нужна 1 раз в минуту.
-Тут уже потребуется более сложная логика и для Laravel будет вот такая [структура](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/HealthCheck):
+Тут уже потребуется более сложная логика и для Laravel будет вот такая [структура](https://github.com/clean-structure/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/src/HealthCheck):
 - Application/Command/CheckDbWriter.php
 - Application/Query/CheckDbReader.php
 - Application/UseCase/DbHealthUseCase.php
@@ -309,7 +309,7 @@
 ### Для себя я сформулировал следующие упрощенные правила.
 
 1. Не усложняй и так всё сложно! 
-2. Между слоями существуют [следующие зависимости](https://github.com/vendelev/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/tests/Architecture/CleanArchitectureTest.php):
+2. Между слоями существуют [следующие зависимости](https://github.com/clean-structure/Clean-Architecture-Laravel-Demo-Structure/blob/main//backend/tests/Architecture/CleanArchitectureTest.php):
    - **Presentation**, тк это часть фреймворка, может использовать **Infrastructure**, **Application** и **Domain** (и свой и чужой),
    - **Infrastructure** может использовать только **Application** и **Domain** (и свой и чужой),
    - **Application** может использовать **Domain** (желательно, только свой),

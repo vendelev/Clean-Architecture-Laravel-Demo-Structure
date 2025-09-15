@@ -13,7 +13,8 @@ export default defineConfig({
     outline: { label: 'Содержание страницы' },
 
     sidebar: [
-      { text: 'Чистая Структура', link: '/clean-structure/' }
+      { text: 'Чистая Структура', link: '/clean-structure/' },
+      { text: 'Чистый Код', link: '/clean-code' }
     ],
 
     socialLinks: [

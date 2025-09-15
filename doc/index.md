@@ -8,4 +8,6 @@ hero:
   actions:
     - text: Чистая Структура
       link: /clean-structure/
+    - text: Чистый код
+      link: /clean-code/
 ---
