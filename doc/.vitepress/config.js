@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: '/Clean-Architecture-Laravel-Demo-Structure/',
   title: "The Clean Structure",
-  description: "2222",
+  description: "",
   lang: 'ru-RU',
   cleanUrls: true,
   ignoreDeadLinks: true,
