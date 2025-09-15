@@ -13,7 +13,6 @@
 Намного удобнее все проверки проводить автоматически и единообразно для всех и не только в CI/CD, но и локально - в PHPStorm.<br>
 С роботом сложно спорить. :)<br>
 
----
 ## Автоматизируй это
 Прежде всего нужно настроить максимально простой и удобный запуск проверок нашего кода.
 
@@ -40,7 +39,6 @@
 - для работы с Git и Docker использую Makefile, 
 - через PHPStorm запускаю команды из Composer scripts.
 
----
 ## Анализируй это
 [Линтеры](https://practicum.yandex.ru/blog/chto-takoe-linter-v-programmirovanii/), в мире PHP больше известны под названием [статические анализаторы кода](https://kitp.netlify.app/docs/isrpo/lections/l_06/), помогают:
 - Обучать новых членов команды принятым стандартам
@@ -105,7 +103,6 @@
 Хорошие bundle'ы так же имеют команды для проверки, например:
 - **_bin/console doctrine:schema:validate_** - Проверка соответствия схемы в БД и файлов с mapping-ом
 
----
 ## Тестируй это
 Чистый код - это не только ~~ценный мех~~ CodeStyle и TypeHint, но ещё и автоматические тесты.
 
@@ -131,7 +128,6 @@
 - **_vendor/bin/composer-dependency-analyser_** - [Инструмент](https://github.com/shipmonk-rnd/composer-dependency-analyser) помогает выявлять скрытые зависимости в проекте. Подсказывает, что используются зависимости, которые установлены не на прямую в composer.json, но требует [настройки](https://github.com/clean-structure/Clean-Structure-Symfony-Example/blob/master/backend/composer-dependency-analyser.php)
 - **_composer outdated --strict --sort-by-age_** - Команда выводит список всех устаревших пакетов. Это помогает поддерживать зависимости в актуальном состоянии
 
----
 ## Помогаторы
 ### Editorconfig
 [EditorConfig — Одни Настройки для всех Редакторов/IDE](https://habr.com/ru/articles/220131) - статья старая, но всё еще актуальная.
